@@ -112,7 +112,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		// Prepare path to load the overrides from
 		$devPath = "/var/www/html/vendor-dev/*";
 		$extra = $composer->getPackage()->getExtra();
-		if(is_string($extra["composer-dev-symlink"]))
+		if(!empty($extra["composer-dev-symlink"]) && is_string($extra["composer-dev-symlink"]))
 			$devPath = rtrim($extra["composer-dev-symlink"], " *\\/") . "/*";
 
 		// Introduce ourselves
