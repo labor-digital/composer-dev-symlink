@@ -1,0 +1,14 @@
+{
+    "name": "labor/composer-dev-symlink",
+    "type": "composer-plugin",
+    "require": {
+        "php": ">=7.0",
+        "composer-plugin-api": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {"Labor\\ComposerDevSymlink\\": "Classes/"}
+    },
+    "extra": {
+        "class": "Labor\\ComposerDevSymlink\\Composer\\Plugin"
+    }
+}
