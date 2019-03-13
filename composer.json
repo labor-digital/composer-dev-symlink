@@ -1,7 +1,6 @@
 {
     "name": "labor/composer-dev-symlink",
     "type": "composer-plugin",
-    "version": "1.0.0",
     "require": {
         "php": ">=7.0",
         "composer-plugin-api": "^1.0"

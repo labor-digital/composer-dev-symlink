@@ -34,6 +34,12 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 	protected $reverted = FALSE;
 	
 	/**
+	 * True if this is an action on the root package (global installation); we ignore that stuff...
+	 * @var bool
+	 */
+	protected $isRoot = false;
+	
+	/**
 	 * {@inheritDoc}
 	 */
 	public static function getSubscribedEvents() {
@@ -49,6 +55,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 	 * {@inheritDoc}
 	 */
 	public function activate(Composer $composer, IOInterface $io) {
+		$this->isRoot = $composer->getPackage()->getName() === "__root__";
 	}
 	
 	/**
@@ -57,6 +64,9 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 	 * @param \Composer\Script\Event $event
 	 */
 	public function revertSymlinks(Event $event) {
+		// Ignore the global installation
+		if($this->isRoot) return;
+		
 		// Skip if we already ran
 		if ($this->reverted) return;
 		$this->reverted = TRUE;
@@ -91,6 +101,8 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 	 * @param \Composer\Script\Event $event
 	 */
 	public function postAutoload(Event $event) {
+		// Ignore the global installation
+		if($this->isRoot) return;
 		
 		// Get references
 		$composer = $event->getComposer();
@@ -137,6 +149,10 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 				$io->write("The package: \"" . $key . "\" is already a symlink, skip...");
 				continue;
 			}
+			
+			// Skip if there is an unknown package required
+			if(!isset($overridePackages[$key]))
+				throw new \Exception("Found an unknown target package which is not known in the override packages! \"" . $key . "\"");
 			
 			// Move original package out of the way and create a symlink to it's source
 			rename($pathToOverride, $pathToOverride . ".backup");
