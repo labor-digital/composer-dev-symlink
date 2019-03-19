@@ -1,0 +1,22 @@
+clone:
+  depth: 1
+
+pipelines:
+  custom:
+    release:
+      -
+        step: &release
+          image:
+            name: 848331400135.dkr.ecr.eu-central-1.amazonaws.com/labor-prod-pipelines:conventional-release
+            aws:
+              access-key: $AWS_ACCESS_KEY_ID
+              secret-key: $AWS_SECRET_ACCESS_KEY
+          name: Release
+          script:
+            - source /opt/release.sh --ci-integration --composer-publish --git-push
+  
+  branches:
+    master:
+      -
+        step:
+          <<: *release
