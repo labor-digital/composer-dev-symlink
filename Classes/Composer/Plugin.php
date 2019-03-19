@@ -28,6 +28,11 @@ use Composer\Script\ScriptEvents;
 
 class Plugin implements PluginInterface, EventSubscriberInterface {
 	/**
+	 * Added to the original directory to mark it as a backup to revert
+	 */
+	const BACKUP_SUFFIX = ".dev-symlink-bkp";
+	
+	/**
 	 * True if the revertSymlinks() ran at least once...
 	 * @var bool
 	 */
@@ -80,7 +85,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 		foreach ($repoManager->getLocalRepository()->getPackages() as $package) {
 			// Flush our install path
 			$installPath = $composer->getInstallationManager()->getInstallPath($package);
-			$installBackupPath = $installPath . ".backup";
+			$installBackupPath = $installPath . static::BACKUP_SUFFIX;
 			if (!is_dir($installBackupPath)) continue;
 			
 			// Remove the symlink
@@ -155,7 +160,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface {
 				throw new \Exception("Found an unknown target package which is not known in the override packages! \"" . $key . "\"");
 			
 			// Move original package out of the way and create a symlink to it's source
-			rename($pathToOverride, $pathToOverride . ".backup");
+			rename($pathToOverride, $pathToOverride . static::BACKUP_SUFFIX);
 			symlink($overridePackages[$key], $pathToOverride);
 			$io->write("The package: \"" . $key . "\" was sym-linked to the dev-source at: \"" . $overridePackages[$key] . "\"");
 		}
