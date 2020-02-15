@@ -62,6 +62,26 @@
         <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
       </indentOptions>
     </codeStyleSettings>
+    <codeStyleSettings language="DB2">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="Derby">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="H2">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="HSQLDB">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
     <codeStyleSettings language="HTML">
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
@@ -84,6 +104,16 @@
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
         <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="MySQL">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="Oracle">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="PHP">
@@ -187,6 +217,11 @@
         </rules>
       </arrangement>
     </codeStyleSettings>
+    <codeStyleSettings language="PostgreSQL">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
     <codeStyleSettings language="SASS">
       <indentOptions>
         <option name="KEEP_INDENTS_ON_EMPTY_LINES" value="true" />
@@ -198,6 +233,21 @@
       </indentOptions>
     </codeStyleSettings>
     <codeStyleSettings language="SQL">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="SQLite">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="Sybase">
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+    <codeStyleSettings language="TSQL">
       <indentOptions>
         <option name="USE_TAB_CHARACTER" value="true" />
       </indentOptions>

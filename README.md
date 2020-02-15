@@ -17,3 +17,10 @@ By default the plugin will look for packages to link in the directory: `/var/www
   * https://github.com/franzliedke/studio/issues/89
   * https://github.com/DHager/composer-haydn
   * https://github.com/Letudiant/composer-shared-package-plugin/pull/21
+
+## Postcardware
+You're free to use this package, but if you use it regularly in your development environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+
+Our address is: LABOR.digital - Fischtorplatz 21 - 55116 Mainz, Germany
+
+We publish all received postcards on our [company website](https://labor.digital).
