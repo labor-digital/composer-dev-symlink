@@ -1,6 +1,25 @@
 {
-    "name": "labor/composer-dev-symlink",
+    "name": "labor-digital/composer-dev-symlink",
     "type": "composer-plugin",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "LABOR.digital",
+            "email": "info@labor.digital",
+            "homepage": "https://www.labor.digital",
+            "role": "Company"
+        },
+        {
+            "name": "Martin Neundorfer",
+            "email": "m.neundorfer@labor.digital",
+            "homepage": "https://www.neunerlei.eu",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/labor-digital/composer-dev-symlink/issues",
+        "source": "https://github.com/labor-digital/composer-dev-symlink"
+    },
     "require": {
         "php": ">=5.6",
         "composer-plugin-api": "^1.0"
