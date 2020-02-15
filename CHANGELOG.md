@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/labor-digital/composer-dev-symlink/compare/v1.2.0...v1.3.0) (2020-02-15)
+
+
+### Features
+
+* change package namespace to "labor-digital" ([ba86fd0](https://github.com/labor-digital/composer-dev-symlink/commit/ba86fd02ca3e7cc1104230eb984526da4c18b844))
+
 ## [1.2.0](https://github.com/labor-digital/composer-dev-symlink/compare/v1.1.1...v1.2.0) (2020-02-15)
 
 
