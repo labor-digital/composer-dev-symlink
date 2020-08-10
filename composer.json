@@ -26,11 +26,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Labor\\ComposerDevSymlink\\": "Classes/"
+            "LaborDigial\\ComposerDevSymlink\\": "Classes/"
         }
     },
     "extra": {
-        "class": "Labor\\ComposerDevSymlink\\Composer\\Plugin"
+        "class": "LaborDigial\\ComposerDevSymlink\\Composer\\Plugin"
     },
-    "version": "1.3.0"
+    "version": "1.3.0",
+    "require-dev": {
+        "composer/composer": "^1.10"
+    }
 }

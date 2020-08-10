@@ -17,7 +17,7 @@
  * Last modified: 2019.03.13 at 14:00
  */
 
-namespace Labor\ComposerDevSymlink\Composer;
+namespace LaborDigial\ComposerDevSymlink\Composer;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
@@ -26,6 +26,7 @@ use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 use Composer\Script\ScriptEvents;
 use RuntimeException;
+use Throwable;
 
 class Plugin implements PluginInterface, EventSubscriberInterface
 {
@@ -87,13 +88,9 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         }
         $this->reverted = true;
 
-        // Get references
-        $composer    = $event->getComposer();
-        $io          = $event->getIO();
-        $repoManager = $composer->getRepositoryManager();
-
         // Find all locally installed packages and revert backups
-        foreach ($repoManager->getLocalRepository()->getPackages() as $package) {
+        $composer = $event->getComposer();
+        foreach ($composer->getRepositoryManager()->getLocalRepository()->getPackages() as $package) {
             // Flush our install path
             $installPath       = $composer->getInstallationManager()->getInstallPath($package);
             $installBackupPath = $installPath . static::BACKUP_SUFFIX;
@@ -105,12 +102,15 @@ class Plugin implements PluginInterface, EventSubscriberInterface
             if (is_link($installPath)) {
                 unlink($installPath);
             }
+
+            // Remove the file or directory
             if (file_exists($installPath)) {
                 $this->rmdir($installBackupPath);
-                $io->write('Removed backup of package: "' . $package->getName() . '"...');
+                $event->getIO()->write('Removed backup of package: "' . $package->getName() . '"...');
             } else {
                 rename($installBackupPath, $installPath);
-                $io->write('The package: "' . $package->getName() . '" was restored to it\'s original state...');
+                $event->getIO()->write(
+                    'The package: "' . $package->getName() . '" was restored to it\'s original state...');
             }
         }
     }
@@ -141,6 +141,18 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 
         // Introduce ourselves
         $io->write('Checking for dev-only package overrides in: "' . $devPath . '"...');
+
+        // Ignore if the directory does not exist or does not have contents
+        try {
+            $contents = glob($devPath);
+            if (! $contents || empty($contents)) {
+                return;
+            }
+        } catch (Throwable $e) {
+            $io->write('Exception while check for packages: ' . $e->getMessage());
+
+            return;
+        }
 
         // Create our own repository to read the packages in the vendor-dev directory
         $repo = $repoManager->createRepository('path', [
