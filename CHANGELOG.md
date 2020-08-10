@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/labor-digital/composer-dev-symlink/compare/v1.3.0...v1.3.1) (2020-08-10)
+
+
+### Bug Fixes
+
+* clean up CHANGELOG.md ([25204f8](https://github.com/labor-digital/composer-dev-symlink/commit/25204f85e70232fd528c1ae49187254a08ce0063))
+* fix crash if vendor-dev directory does not exist ([6ecc8d1](https://github.com/labor-digital/composer-dev-symlink/commit/6ecc8d19f08e2c6328e24c18197a5e6786550ca0))
+* make plugin PSR-2 compliant ([d63ba35](https://github.com/labor-digital/composer-dev-symlink/commit/d63ba35ef3d9a5e81fb47491f6586175a81ab077))
+* update labor email address ([3914ede](https://github.com/labor-digital/composer-dev-symlink/commit/3914edecaf85fd6af2f634149ed8993159ce28d1))
+
 ## [1.3.0](https://github.com/labor-digital/composer-dev-symlink/compare/v1.2.0...v1.3.0) (2020-02-15)
 
 
