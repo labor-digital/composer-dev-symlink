@@ -13,7 +13,7 @@ composer global require labor-digital/composer-dev-symlink
 ```
 
 ## Configuration
-By default the plugin will look for packages to link in the directory: `/var/www/html/vendor-dev/`. However, if that does not fit your needs you can always change the directory by setting it in your project's composer.json:
+By default the plugin will look for packages to link in the directory: `$CWD/vendor-dev/`. However, if that does not fit your needs you can always change the directory by setting it in your project's composer.json:
 ```json
 {
 	"extra": {
