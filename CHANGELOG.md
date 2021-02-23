@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/labor-digital/composer-dev-symlink/compare/v1.3.1...v1.4.0) (2021-02-23)
+
+
+### Features
+
+* make package compatible with composer v2 ([f503b9c](https://github.com/labor-digital/composer-dev-symlink/commit/f503b9ccc8d238cf51f85c234484efcf544af340))
+
 ### [1.3.1](https://github.com/labor-digital/composer-dev-symlink/compare/v1.3.0...v1.3.1) (2020-08-10)
 
 
