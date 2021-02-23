@@ -65,7 +65,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     /**
      * {@inheritDoc}
      */
-    public function activate(Composer $composer, IOInterface $io)
+    public function activate(Composer $composer, IOInterface $io): void
     {
         $this->isRoot = $composer->getPackage()->getName() === '__root__';
     }
@@ -75,7 +75,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
      *
      * @param   \Composer\Script\Event  $event
      */
-    public function revertSymlinks(Event $event)
+    public function revertSymlinks(Event $event): void
     {
         // Ignore the global installation
         if ($this->isRoot) {
@@ -120,7 +120,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
      *
      * @param   \Composer\Script\Event  $event
      */
-    public function postAutoload(Event $event)
+    public function postAutoload(Event $event): void
     {
         // Ignore the global installation
         if ($this->isRoot) {
@@ -133,7 +133,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $repoManager = $composer->getRepositoryManager();
 
         // Prepare path to load the overrides from
-        $devPath = '/var/www/html/vendor-dev/*';
+        $devPath = rtrim(getcwd(), '/\\') . '/vendor-dev/*';
         $extra   = $composer->getPackage()->getExtra();
         if (! empty($extra['composer-dev-symlink']) && is_string($extra['composer-dev-symlink'])) {
             $devPath = rtrim($extra['composer-dev-symlink'], ' *\\/') . '/*';
@@ -149,7 +149,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
                 return;
             }
         } catch (Throwable $e) {
-            $io->write('Exception while check for packages: ' . $e->getMessage());
+            $io->write('Exception while searching for packages: ' . $e->getMessage());
 
             return;
         }
@@ -209,7 +209,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
      *
      * @param $dir
      */
-    protected function rmdir($dir)
+    protected function rmdir($dir): void
     {
         if (is_dir($dir)) {
             $objects = scandir($dir);
@@ -225,4 +225,14 @@ class Plugin implements PluginInterface, EventSubscriberInterface
             rmdir($dir);
         }
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function deactivate(Composer $composer, IOInterface $io): void { }
+
+    /**
+     * @inheritDoc
+     */
+    public function uninstall(Composer $composer, IOInterface $io): void { }
 }
