@@ -9,7 +9,7 @@ composer require labor-digital/composer-dev-symlink
 
 If you want to install the plugin globally instead, feel free to do so by using:
 ```
-composer require -g labor-digital/composer-dev-symlink
+composer global require labor-digital/composer-dev-symlink
 ```
 
 ## Configuration
@@ -23,7 +23,7 @@ By default the plugin will look for packages to link in the directory: `/var/www
 ```
 
 ## To keep in mind
-* This plugin is installed globally in our [php dev images](https://github.com/labor-digital/docker-base-images) 
+* This plugin is installed globally in our [php dev images](https://github.com/labor-digital/docker-base-images)
 * There are plenty of other plugins that aim to do the same stuff, but did not work as globally installed plugin or broke the composer.lock file.
   * https://github.com/franzliedke/studio/issues/89
   * https://github.com/DHager/composer-haydn
